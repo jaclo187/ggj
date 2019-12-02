@@ -96,14 +96,18 @@
                     <form class="form" role="form" autocomplete="off" id="formRegister" novalidate="" method="POST">
                         <div class="form-group">
                             <a href="" class="float-right">Already registered?</a>
-                            <label for="fname">Name</label>
-                            <input type="text" class="form-control form-control-lg" name="fname" id="fname" required="">
-                            <div class="invalid-feedback">You must enter a password!</div>
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control form-control-lg" name="name" id="name" required="">
+                            <div class="invalid-feedback">You must enter a Name!</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName">Firstname</label>
+                            <input type="text" class="form-control form-control-lg" name="firstName" id="firstName" required="">
+                            <div class="invalid-feedback">You must enter a Firstname!</div>
                         </div>
                         <div class="form-group">
                             <label for="emailRe">E-mail</label>
-                            <input type="text" class="form-control form-control-lg" name="emailRe" id="emailRe"
-                                   required="">
+                            <input type="text" class="form-control form-control-lg" name="emailRe" id="emailRe" required="">
                             <div class="invalid-feedback">You must enter an E-mail!</div>
                         </div>
                         <div class="form-group">
@@ -118,21 +122,32 @@
                                    autocomplete="new-password">
                             <div class="invalid-feedback">You must enter a password!</div>
                         </div>
+                        <div class="form-group">
+                            <label class="custom-select-label" for="skills">What are your skills (please select one)</label>
+                            <select class="custom-select" id="skills">
+                                <option selected>Choose...</option>
+                                <option value="1">Java</option>
+                                <option value="2">JavaScript</option>
+                                <option value="3">...</option>
+                            </select>
+                        </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="rememberMeRe">
-                            <label class="custom-control-label" for="rememberMe">Remember me on this computer</label>
+                            <input type="checkbox" class="custom-control-input" id="newsletter" checked>
+                            <label class="custom-control-label" for="newsletter">Subscript Newsletter</label>
                         </div>
                         <div class="form-group py-4">
                             <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal" aria-hidden="true">
                                 Cancel
                             </button>
-                            <button type="submit" class="btn btn-success btn-lg float-right" id="btnRe">Login</button>
+                            <button type="submit" class="btn btn-success btn-lg float-right" id="btnRe">Register</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+
     <div class="justify-content-md-center">
         <p>Global Game Jam <b> 31 January - 02 February 2020</b></p>
         <p><b>Where:</b> 19 rue Guillaume Schneider, Luxembourg-Ville, L-2522, LU
