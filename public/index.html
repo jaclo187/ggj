@@ -54,7 +54,7 @@
                 <div class="modal-body">
                     <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
                         <div class="form-group">
-                            <a href="" class="float-right">New user?</a>
+                            <a href="" data-dismiss="modal" data-toggle="modal" data-target="#modal-register" class="float-right">New user?</a>
                             <label for="uname1">E-mail</label>
                             <input type="text" class="form-control form-control-lg" name="uname1" id="uname1"
                                    required="">
@@ -95,7 +95,7 @@
                 <div class="modal-body">
                     <form class="form" role="form" autocomplete="off" id="formRegister" novalidate="" method="POST">
                         <div class="form-group">
-                            <a href="" class="float-right">Already registered?</a>
+                            <a href="" data-dismiss="modal" data-toggle="modal" data-target="#modal-login" class="float-right">Already registered?</a>
                             <label for="name">Last Name</label>
                             <input type="text" class="form-control form-control-lg" name="name" id="name" required="">
                             <div class="invalid-feedback">You must enter a Last Name!</div>
