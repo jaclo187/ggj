@@ -95,7 +95,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `globalgamejam`.`tblParticipant` (
   `idParticipant` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `dtAllergies` TEXT NULL,
-  `dtTShirtSize` VARCHAR(4) NOT NULL,
+  `dtTShirtSize` VARCHAR(4) NULL,
   `dtSkillSet` VARCHAR(64) NOT NULL,
   `dtNewsletter` TINYINT NOT NULL DEFAULT 0,
   `dtHasPaied` TINYINT NULL DEFAULT 0,
