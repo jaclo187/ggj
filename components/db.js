@@ -15,6 +15,11 @@ class MySQLConnection{
 
         this.destroy = async () => {
             if(conn) conn.destroy;
+        };
+
+        this.login = async email =>  {
+            if(!conn) await connect();
+            return await conn.execute('SELECT idPerson, dtPassword FROM tblPerson WHERE dtEmail = ?', [`${email}`])
         }
 
     }
