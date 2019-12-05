@@ -4,7 +4,7 @@
 class MySQLConnection{
     
     constructor(){
-        const mysql = require('mysql2');
+        const mysql = require('mysql2/promise');
         const DBConnectOpts = require(__dirname + '/mysql_options').DBConnectOpts;
         let conn = undefined;
         const bcrypt = require('bcryptjs');
@@ -19,7 +19,7 @@ class MySQLConnection{
 
         this.login = async email =>  {
             if(!conn) await connect();
-            return await conn.execute('SELECT idPerson, dtPassword FROM tblPerson WHERE dtEmail = ?', [`${email}`])
+            return conn.execute('SELECT idPerson, dtPassword FROM tblPerson WHERE dtEmail = ?', [`${email}`])
         }
 
     }
