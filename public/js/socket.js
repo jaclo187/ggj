@@ -2,7 +2,7 @@
 
 const init = () => {
 
-    const wssURL = 'wss://students.btsi.lu/nodejaclo/wss'; // path has to include "/wss" as suffix for websocket connections using ws
+    const wssURL = `ws://${location.host}`; 
     const wss = new WebSocket(wssURL);
     const promises = []; //contains promises send to the server
 
@@ -20,6 +20,17 @@ const init = () => {
         wss.send(JSON.stringify(obj)); 
         });
     };
+
+    wss.addEventListener('open', () => {
+        
+        document.querySelector('#btnLogin').addEventListener('click', e => {
+            e.preventDefault();
+            execute('login',{},'login')
+        });
+
+    });
+
+
   
 };
   

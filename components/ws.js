@@ -6,6 +6,8 @@ module.exports = class WebSocketServer{
         const conn = require('./db');
         const bcrypt = require('bcryptjs');
 
+        console.log("Websocket Server starting...")
+
         wss.on('connection', (socket, req) => {
             const send = (msg, options) => {
               const obj = {};
@@ -21,8 +23,44 @@ module.exports = class WebSocketServer{
               console.dir(err);
             });
 
-            console.log("WSS INITIALIZED")
-            console.log(req);
+            console.log("WSS CONNECTION INITIALIZED");
+
+            socket.on('message', data => {
+              try {
+
+                data = JSON.parse(data)
+
+                if(data && data.command){
+
+                  switch (data.command) {
+
+                    case 'register':
+                      conn.register();
+                      break;
+                  
+                    case 'login':
+                      console.log(conn.login());
+                      break;
+
+                    case 'registerAdmin':
+                      conn.registerAdmin(data.email, data.name);
+                      break;
+
+                    case 'update':
+                      conn.update();
+                      break;
+
+                    default:
+                      break;
+
+                  }
+
+                }
+                
+              } catch (error) {
+                console.dir(error)
+              }
+            });
 
         })
         

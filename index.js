@@ -29,7 +29,7 @@ const sessionOpts = {
 const sess = session(sessionOpts);
 
 app.use(helmet.noSniff())
-app.use('/', express.static('public'));
+
 
 const logger = (req, res, next) => {
     console.log("Loaded")
@@ -37,6 +37,8 @@ const logger = (req, res, next) => {
 } 
 
 if(DEBUG) app.use(logger)
+
+app.use('/', express.static('public'));
 
 const server = http.createServer(app);
 
