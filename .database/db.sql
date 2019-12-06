@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `globalgamejam`.`tblPerson` (
   `dtFirstName` VARCHAR(254) NOT NULL,
   `dtLastName` VARCHAR(254) NOT NULL,
   `dtPassword` VARCHAR(254) NOT NULL,
-  `dtEmail` VARCHAR(254) NOT NULL,
+  `dtEmail` VARCHAR(254) NOT NULL UNIQUE,
   PRIMARY KEY (`idPerson`))
 ENGINE = InnoDB;
 
