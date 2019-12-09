@@ -23,9 +23,9 @@ const init = () => {
 
     wss.addEventListener('open', () => {
         
-        document.querySelector('#btnLogin').addEventListener('click', e => {
+        document.querySelector('#btn-modal-register').addEventListener('click', e => {
             e.preventDefault();
-            execute('login',{},'login')
+            execute('register',{},'register')
         });
 
     });

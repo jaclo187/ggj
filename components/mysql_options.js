@@ -14,7 +14,7 @@ const DBConnectOpts = {
     port: 3306,
     charset: 'utf8_bin',
     user: 'node',
-    password: 'q1w2e3r4t5',
+    password: 'q1w2e3r4t5!',
     database: 'globalgamejam'
 };
 

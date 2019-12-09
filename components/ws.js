@@ -25,7 +25,7 @@ module.exports = class WebSocketServer{
 
             console.log("WSS CONNECTION INITIALIZED");
 
-            socket.on('message', data => {
+            socket.on('message', async data => {
               try {
 
                 data = JSON.parse(data)
@@ -35,7 +35,8 @@ module.exports = class WebSocketServer{
                   switch (data.command) {
 
                     case 'register':
-                      conn.register();
+                      await conn.register("Piti","Jempi","123","piti@test.com","audio",0);
+                      console.log("Registration done");
                       break;
                   
                     case 'login':
