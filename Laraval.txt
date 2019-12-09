@@ -1,9 +1,0 @@
-Test
-
--Perfect fir php
--top documentation
--Packages and resource availability
-
-Cons
--Complex
--slow 
