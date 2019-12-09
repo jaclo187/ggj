@@ -35,7 +35,8 @@ module.exports = class WebSocketServer{
                   switch (data.command) {
 
                     case 'register':
-                      await conn.register("Piti","Jempi","123","piti@test.com","audio",0);
+                      await conn.register(data.firstName, data.lastName, data.password, data.email, data.skill, data.newsletter);
+                      console.log(data);
                       console.log("Registration done");
                       break;
                   
