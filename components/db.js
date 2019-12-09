@@ -5,8 +5,8 @@ class MySQLConnection{
     constructor() {
         const mysql = require('mysql2/promise');
         const DBConnectOpts = require(__dirname + '/mysql_options').DBConnectOpts;
-        let conn = undefined;
         const bcrypt = require('bcryptjs');
+        let conn = undefined;
 
         const connect = async () => {
             if (!conn) conn = await mysql.createConnection(DBConnectOpts);
@@ -21,30 +21,24 @@ class MySQLConnection{
             return conn.execute('SELECT idPerson, dtPassword FROM tblPerson WHERE dtEmail = ?', [`${email}`])
         }
 
-        this.register = async (firstname, lastname, password, email, skill, newsLetter ) =>
+        this.register = async (firstname, lastname, password, email, skill, newsLetter) =>
         {
             if (!conn) await connect();
-            let stmt = 'INSERT INTO tblPerson (dtFirstName, dtLastName, dtPassword, dtEmail) VALUES (?,?,?,?);' ;
-                //'Insert INTO tblParticipant (dtSkillsSet,dtNewsletter) VALUES (?,?)';
-
             let hash = await bcrypt.hash(password, 10);
+
+            let stmt = 'INSERT INTO tblPerson (dtFirstName, dtLastName, dtPassword, dtEmail) VALUES (?,?,?,?);' ;
             let inserts = [`${firstname}`, `${lastname}`, `${hash}`, `${email}`];
 
             let result = await conn.execute(stmt, inserts);
+            let userID = result[0].insertId;    //return value of LAST_INSERT_ID()
+            newsLetter = newsLetter == true ? 1 : 0;
 
-            console.dir(result[0].insertId);
+            stmt = 'INSERT INTO tblParticipant (dtSkillSet, dtNewsLetter, fiPerson, fiEvent) VALUES (?,?,?,?);';
+            inserts = [`${skill}`,`${newsLetter}`,`${userID}`,1];
 
-            stmt = 'INSERT INTO tblParticipant (dtSkillSet, dtNewsLetter, fiPerson, fiEvent, fiGroup)'
-            /* if (`${password}` == `${password2}`) {
-                
-                return conn.execute(stmt, insert);
-            }else {
-                return "Error: You must insert two times the same password!";
-            } */
+            return conn.execute(stmt, inserts);
         }
-
     }
-
 }
 
 
