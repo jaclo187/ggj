@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Louis Jacoby">
+    <meta name="author" content="Kevin Boesen">
+    <meta name="author" content="Mariana Bre">
+    <link rel="stylesheet" href="css/customs.css"></link>
+    <link rel="stylesheet" href="css/fonts.css"></link>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/socket.js"></script>
+    <title>Projects</title>
+</head>
+<body>
+<header class="container">
+    <div class="row justify-content-md-center">
+        <span class="col"></span>
+        <h1 class="col-md-auto">Global Game Jam - 2020</h1>
+        <span class="col"></span>
+
+        <div class="w-100"></div>
+
+        <span class="col"></span>
+        <h2 class="col-md-auto">Make a Game in 48h!</h2>
+        <span class="col"></span>
+    </div>
+</header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a role="button" class="nav-item nav-link" href="#" data-toggle="modal" data-target="#modal-register"
+               id="btn-register">Register</a>
+            <a role="button" class="nav-item nav-link" href="#" data-toggle="modal" data-target="#modal-login"
+               id="btn-login">Login</a>
+        </div>
+    </div>
+</nav>
+<main class="container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="https://globalgamejam.org/2019/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All"><img
+                        class="d-block w-100" src="../public/images/2019.png" alt="First slide"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://globalgamejam.org/2018/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All"><img
+                        class="d-block w-100" src="../public/images/2018.png" alt="Second slide"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://globalgamejam.org/2017/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All"><img
+                        class="d-block w-100" src="../public/images/2017.png" alt="Third slide"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://globalgamejam.org/2016/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All"><img
+                        class="d-block w-100" src="../public/images/2016.png" alt="Third slide"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://globalgamejam.org/2015/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All"><img
+                        class="d-block w-100" src="../public/images/2015.png" alt="Third slide"></a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</main>
+</body>
+</html>
