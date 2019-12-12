@@ -48,7 +48,7 @@ ENGINE = InnoDB;
 -- Table `globalgamejam`.`tblLocation`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `globalgamejam`.`tblLocation` (
-  `idLocation` INT UNSIGNED NOT NULL,
+  `idLocation` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `dtName` VARCHAR(128) NOT NULL,
   `dtAddress` VARCHAR(128) NOT NULL,
   `dtPhone` VARCHAR(128) NULL,

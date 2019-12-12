@@ -31,7 +31,7 @@
     </div>
 </header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse justify-content-md-center" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbar-nav-alt-markup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
             <a role="button" class="nav-item nav-link" href="#" data-toggle="modal" data-target="#modal-register"
@@ -53,31 +53,30 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                    <form class="form" role="form" autocomplete="off" id="form-login" novalidate="" method="POST">
                         <div class="form-group">
                             <a href="" data-dismiss="modal" data-toggle="modal" data-target="#modal-register"
                                class="float-right">New user?</a>
-                            <label for="uname1">E-mail</label>
-                            <input type="text" class="form-control form-control-lg" name="uname1" id="uname1"
+                            <label for="ipt-email-login">E-mail</label>
+                            <input type="text" class="form-control form-control-lg" name="ipt-email-login" id="ipt-email-login"
                                    required="">
                             <div class="invalid-feedback">Oops, you missed this one.</div>
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control form-control-lg" id="pwd1" required=""
+                            <label for="ipt-pwd-login">Password</label>
+                            <input type="password" class="form-control form-control-lg" id="ipt-pwd-login" name="ipt-pwd-login" required=""
                                    autocomplete="new-password">
                             <div class="invalid-feedback">Enter your password too!</div>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="rememberMe">
-                            <label class="custom-control-label" for="rememberMe">Remember me on this computer</label>
+                            <input type="checkbox" class="custom-control-input" id="ipt-remember-me-login" name="ipt-remember-me-login">
+                            <label class="custom-control-label" for="ipt-remember-me-login">Remember me on this computer</label>
                         </div>
                         <div class="form-group py-4">
                             <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal" aria-hidden="true">
                                 Cancel
                             </button>
-                            <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login
-                            </button>
+                            <button type="submit" class="btn btn-success btn-lg float-right" id="btn-modal-login">Login</button>
                         </div>
                     </form>
                 </div>
@@ -95,59 +94,58 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <form class="form" role="form" autocomplete="off" id="formRegister" novalidate="" method="POST">
+                    <form class="form" role="form" autocomplete="off" id="form-register" novalidate="" method="POST">
                         <div class="form-group">
                             <a href="" data-dismiss="modal" data-toggle="modal" data-target="#modal-login"
                                class="float-right">Already registered?</a>
-                            <label for="name">Last Name</label>
-                            <input type="text" class="form-control form-control-lg" name="name" id="name" required="">
+                            <label for="ipt-last-name-register">Last Name</label>
+                            <input type="text" class="form-control form-control-lg" name="name" id="ipt-last-name-register" id="ipt-last-name-register" required="">
                             <div class="invalid-feedback">You must enter a Last Name!</div>
                         </div>
                         <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <input type="text" class="form-control form-control-lg" name="firstName" id="firstName"
+                            <label for="ipt-first-name-register">First Name</label>
+                            <input type="text" class="form-control form-control-lg" name="ipt-first-name-register" id="ipt-first-name-register"
                                    required="">
                             <div class="invalid-feedback">You must enter a First Name!</div>
                         </div>
                         <div class="form-group">
-                            <label for="emailRe">E-mail</label>
-                            <input type="text" class="form-control form-control-lg" name="emailRe" id="emailRe"
+                            <label for="ipt-email-register">E-mail</label>
+                            <input type="text" class="form-control form-control-lg" name="ipt-email-register" id="ipt-email-register"
                                    required="">
-                            <div class="invalid-feedback">You must enter an E-mail!</div>
+                            <div class="invalid-feedback">Enter a valid Email!</div>
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control form-control-lg" id="pwdRe" required=""
+                            <label for="ipt-password-register">Password</label>
+                            <input type="password" class="form-control form-control-lg" id="ipt-password-register" name="ipt-password-register" required
                                    autocomplete="new-password">
-                            <div class="invalid-feedback">You must enter a password!</div>
+                            <div class="invalid-feedback">Your password must contain 6 characters, including upper-case and lower-case characters!</div>
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control form-control-lg" id="pwdRe2" required=""
+                            <label for="ipt-password-register-repeat">Repeat Password</label>
+                            <input type="password" class="form-control form-control-lg" id="ipt-password-register-repeat" name="ipt-password-register-repeat" required
                                    autocomplete="new-password">
-                            <div class="invalid-feedback">You must enter a password!</div>
+                            <div class="invalid-feedback">Your passwords do not match!</div>
                         </div>
                         <div class="form-group">
-                            <label class="custom-select-label" for="skills">What is your skill (please select
+                            <label class="custom-select-label" for="ipt-skills-register">What is your skill (please select
                                 one)</label>
-                            <select class="custom-select" id="skills">
-                                <option selected>Programmer</option>
-                                <option >Game designer</option>
-                                <option >Illustrator</option>
-                                <option >Musician</option>
-                                <option >Other ...</option>
+                            <select class="custom-select" id="ipt-skills-register" name="ipt-skills-register">
+                                <option selected value="programmer">Programmer</option>
+                                <option value="design">Game designer</option>
+                                <option value="illustrator">Illustrator</option>
+                                <option value="music">Musician</option>
+                                <option value="other">Other ...</option>
                             </select>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="newsletter" checked>
-                            <label class="custom-control-label" for="newsletter">Subscript Newsletter</label>
+                            <input type="checkbox" class="custom-control-input" id="ipt-newsletter-register" name="ipt-newsletter-register" checked>
+                            <label class="custom-control-label" for="ipt-newsletter-register">Subscribe Newsletter</label>
                         </div>
                         <div class="form-group py-4">
                             <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal" aria-hidden="true">
                                 Cancel
                             </button>
-                            <button type="submit" class="btn btn-success btn-lg float-right" id="btnRe">Register
-                            </button>
+                            <button type="submit" class="btn btn-success btn-lg float-right" id="btn-modal-register">Register</button>
                         </div>
                     </form>
                 </div>
@@ -158,19 +156,28 @@
 
     <div class="justify-content-md-center">
         <h2>Informations</h2>
+        <p><b>What is It? </b>The Global Game Jam® (GGJ) is the world's largest game jam event (game creation) taking
+            place around the world at physical locations. Think of it as a hackathon focused on game development. It is
+            the growth of an idea that in today’s heavily connected world, we could come together, be creative, share
+            experiences and express ourselves in a multitude of ways using video games – it is very universal. The
+            weekend stirs a global creative buzz in games, while at the same time exploring the process of development,
+            be it programming, iterative design, narrative exploration or artistic expression. It is all condensed into
+            a 48 hour development cycle. The GGJ encourages people with all kinds of backgrounds to participate and
+            contribute to this global spread of game development and creativity.</p>
         <p>Global Game Jam <b> 31 January - 02 February 2020</b></p>
         <p><b>Where:</b> 19 rue Guillaume Schneider, Luxembourg-Ville, L-2522, LU
-            Luxembourg <a href="https://goo.gl/maps/SPzgfmCodQGcvL3y5">Google Maps</a></p>
+            Luxembourg <a href="https://goo.gl/maps/SPzgfmCodQGcvL3y5"><em>Google Maps</em></a></p>
         <p><b>Entrance Fee:</b>
             Early birds: 30€ / Late birds: 35€ / With cotisation: 15€</p>
         <p><b>Who can participate:</b> Anyone</p>
         <p><b>Age restrictions:</b> Any / Discharge from parents for minors (-18)</p>
         <p><b>Food options:</b> Meals provided on site</p>
         <p><b>Maximum capacity:</b> 50</p>
+        <a href="projects.html">See all Projects from Luxembourg</a>
 
     </div>
-    
-    <div>
+
+    <div class="text-body mb-5">
         <h2>Planning 31 January - 2 February</h2>
         <b>Friday 14:00: </b>WELCOMING PARTICIPANTS<br>
         <b>Friday 17.00: </b>THEME PRESENTATION<br>
@@ -178,14 +185,15 @@
         <b>Friday 18:00: </b>48-HOUR KICK-OFF<br>
         <b>Sunday 16:00: </b>PRESENTATION OF CREATIONS<br>
         <b>Sunday 17:00: </b>GAME PRESENTATION
+
     </div>
 
 </main>
 <!-- Footer -->
-<footer class="page-footer font-small stylish-color-dark pt-4">
+<footer class="page-footer font-small stylish-color-dark pt-4 bg-dark">
 
     <!-- Footer Links -->
-    <div class="container text-center text-md-left">
+    <div class="container text-center text-md-left text-light">
 
         <!-- Grid row -->
         <div class="row">
@@ -254,7 +262,7 @@
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Link 1</a>
+                        <a href="https://www.facebook.com/ltam.lu/">LAM Facebook</a>
                     </li>
                     <li>
                         <a href="#!">Link 2</a>
@@ -276,9 +284,9 @@
     </div>
     <!-- Footer Links -->
 
-    <hr>
+    <hr class="bg-light">
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">&copy; Copyright 2019<span id="year"></span>
+    <div class="footer-copyright text-center py-3 text-light">&copy; Copyright 2019<span id="year"></span>
 
     </div>
     <!-- Copyright -->
