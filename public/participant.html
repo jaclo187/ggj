@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Louis Jacoby">
+    <meta name="author" content="Kevin Boesen">
+    <meta name="author" content="Mariana Bre">
+    <link rel="stylesheet" href="css/customs.css"></link>
+    <link rel="stylesheet" href="css/fonts.css"></link>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/socket.js"></script>
+    <title>Global Game Jam - Participant</title>
+
+    <style>
+        box{
+            display: block; /*très important!!!*/
+            background-color: honeydew;
+            width: 500px;
+            border: 15px solid lightgray;
+            padding: 50px;
+            margin-left: 20px;
+        }
+        div.Welcome{
+            padding-left: 20px;
+            font-size: 30px;
+        }
+        textarea{
+            resize: none;
+            width: 300px;
+            height: 50px;
+        }
+    </style>
+
+</head>
+<body>
+    <header class="container">
+        <div class="row justify-content-md-center">
+            <span class="col"></span>
+            <h1 class="col-md-auto">Global Game Jam - 2020</h1>
+            <span class="col"></span>
+
+            <div class="w-100"></div>
+
+            <span class="col"></span>
+            <h2 class="col-md-auto">Make a Game in 48h!</h2>
+            <span class="col"></span>
+
+            <div class="w-100"></div>
+
+            <span class="col"></span>
+            <h2 class="col-md-auto">Welcome to your personal environment</h2>
+            <span class="col"></span>
+        </div>
+    </header>
+    <div class="Welcome">May you complete the following, please</div>
+    <br>
+
+    <box>
+        T-Shirt size:
+        <!-- to check only one -> function -->
+        <input type="checkbox" name="sizeS" value="S"> S
+        <input type="checkbox" name="sizeM" value="M"> M
+        <input type="checkbox" name="sizeL" value="L"> L
+        <input type="checkbox" name="sizeXL" value="XL"> XL
+        <br>
+        Allergies/Intolerants:
+        <br><select>
+            <option value="cowMilk">Cow's Milk</option>
+            <option value="cowMilk">Eggs</option>
+            <option value="cowMilk">Tree Nuts</option>
+            <option value="cowMilk">Peanuts</option>
+            <option value="cowMilk">Shellfish</option>
+            <option value="cowMilk">Wheat</option>
+            <option value="cowMilk">Soy</option>
+            <option value="cowMilk">Fish</option>
+            <option value="cowMilk">Others</option>
+        </select>
+        <br>If others allergies, please specify!
+        <br>
+        <textarea cols="num" rows="num" maxlength="80"></textarea>
+        <br>
+        Are you:
+        <input type="checkbox" name="vegeterian" value="vegeterian"> Vegeterian
+        <input type="checkbox" name="vegan" value="vegan"> Vegan
+    </box>
+</body>
+</html>
