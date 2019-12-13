@@ -29,14 +29,26 @@ class MySQLConnection{
             let stmt = 'INSERT INTO tblPerson (dtFirstName, dtLastName, dtPassword, dtEmail) VALUES (?,?,?,?);' ;
             let inserts = [`${firstname}`, `${lastname}`, `${hash}`, `${email}`];
 
-            let result = await conn.execute(stmt, inserts);
-            let userID = result[0].insertId;    //return value of LAST_INSERT_ID()
-            newsLetter = newsLetter == true ? 1 : 0;
+            const result = await conn.execute(stmt, inserts).catch(e => {return e});
 
-            stmt = 'INSERT INTO tblParticipant (dtSkillSet, dtNewsLetter, fiPerson, fiEvent) VALUES (?,?,?,?);';
-            inserts = [`${skill}`,`${newsLetter}`,`${userID}`,1];
+            console.log("------------")
 
-            return conn.execute(stmt, inserts);
+            console.log(result);
+
+            console.log("------------")
+
+            if (result.errno) {
+                return result;
+            }
+            else{
+                let userID = result[0].insertId;
+                newsLetter = newsLetter == true ? 1 : 0;
+
+                stmt = 'INSERT INTO tblParticipant (dtSkillSet, dtNewsLetter, fiPerson, fiEvent) VALUES (?,?,?,?);';
+                inserts = [`${skill}`,`${newsLetter}`,`${userID}`,1];
+
+                return conn.execute(stmt, inserts);
+            } 
         }
     }
 }

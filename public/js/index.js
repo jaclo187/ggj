@@ -1,26 +1,26 @@
 'use strict';
 
+let ggj;
+
 class GlobalGameJam {
 
   constructor () {
-    this.boundVerifyPasswords = this.verifyPasswords.bind(this);
-    this.boundCheckStrongPassword = this.checkStrongPassword.bind(this);
-    this.boundCheckEmail = this.checkEmail.bind(this);
-
-    document.querySelector('#ipt-password-register-repeat').addEventListener('keyup', this.boundVerifyPasswords);
-    document.querySelector('#ipt-password-register').addEventListener('keyup', this.boundCheckStrongPassword);
-    document.querySelector('#ipt-email-register').addEventListener('keyup', this.boundCheckEmail);
+    document.querySelector('#ipt-password-register-repeat').addEventListener('keyup', this.verifyPasswords);
+    document.querySelector('#ipt-password-register').addEventListener('keyup', this.checkStrongPassword);
+    document.querySelector('#ipt-email-register').addEventListener('keyup', this.checkEmail);
+    document.querySelector('#ipt-first-name-register').addEventListener('keyup', this.checkFirstName);
+    document.querySelector('#ipt-last-name-register').addEventListener('keyup', this.checkLastName);
   };
 
   verifyPasswords () {
     let pwd = document.querySelector('#ipt-password-register');
     let pwd2 = document.querySelector('#ipt-password-register-repeat');
 
-    if(pwd.value == pwd2.value){
-      this.makeValid(pwd2);
+    if(pwd.value == pwd2.value && pwd2.value != ""){
+      ggj.makeValid(pwd2);
       return true;
     } else {
-      this.makeInValid(pwd2);
+      ggj.makeInValid(pwd2);
       return false;
     }
   };
@@ -30,10 +30,10 @@ class GlobalGameJam {
     let pwd = document.querySelector('#ipt-password-register');
 
     if(passwordRegex.test(pwd.value)){
-      this.makeValid(pwd);
+      ggj.makeValid(pwd);
       return true;
     } else{
-      this.makeInValid(pwd);
+      ggj.makeInValid(pwd);
       return false;
     }
   };
@@ -42,27 +42,49 @@ class GlobalGameJam {
     let email = document.querySelector('#ipt-email-register');
     let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-    if(emailRegex.test(email.value)) {
-      this.makeValid(email);
+    if(emailRegex.test(email.value) && email.value != "") {
+      ggj.makeValid(email);
       return true;
     } else {
-      this.makeInValid(email);
+      ggj.makeInValid(email);
       return false;
     }
   };
 
+  checkFirstName () {
+    let name = document.querySelector('#ipt-first-name-register');
+    if(name.value !== ""){
+      ggj.makeValid(name)
+      return true
+    } else {
+      ggj.makeInValid(name)
+      return false
+    }
+  }
+
+  checkLastName () {
+    let name = document.querySelector('#ipt-last-name-register');
+    if(name.value !== ""){
+      ggj.makeValid(name)
+      return true
+    } else {
+      ggj.makeInValid(name)
+      return false
+    }
+  }
+
   makeValid (element) {
     element.classList.remove('is-invalid');
     element.classList.add('is-valid');
-  }
+  };
 
   makeInValid (element) {
     element.classList.add('is-invalid');
     element.classList.remove('is-valid');
-  }
+  };
 
 }
 
 addEventListener('DOMContentLoaded', () => {
-  new GlobalGameJam;
+  ggj = new GlobalGameJam;
 });
