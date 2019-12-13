@@ -30,10 +30,18 @@ const sess = session(sessionOpts);
 
 app.use(helmet.noSniff())
 
+app.get("/projects", (req, res) => {
+  res.sendFile(__dirname + "/public/projects.html");
+});
+
+app.get("/participant", (req, res) => {
+  res.sendFile(__dirname + "/public/participant.html");
+});
 
 const logger = (req, res, next) => {
-    console.log("Loaded")
-    next()
+  console.log("Loaded")
+  console.log(req.session)
+  next()
 } 
 
 if(DEBUG) app.use(logger)
