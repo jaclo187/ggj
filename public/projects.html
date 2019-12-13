@@ -14,13 +14,13 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
     <script src="js/socket.js"></script>
-    <title>Projects</title>
+    <title>Global Game Jam - Projects</title>
 </head>
 <body>
 <header class="container">
     <div class="row justify-content-md-center">
         <span class="col"></span>
-        <h1 class="col-md-auto">Global Game Jam - Projects</h1>
+        <h1 class="col-md-auto">Global Game Jam - 2020</h1>
         <span class="col"></span>
 
         <div class="w-100"></div>
@@ -31,13 +31,133 @@
     </div>
 </header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse justify-content-md-center" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbar-nav-alt-markup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/projects">Projects</a>
+            <a role="button" class="nav-item nav-link hide-on-login" href="#" data-toggle="modal" data-target="#modal-register"
+               id="btn-register">Register</a>
+            <a role="button" class="nav-item nav-link hide-on-login" href="#" data-toggle="modal" data-target="#modal-login"
+               id="btn-login">Login</a>
+            <a role="button" class="nav-item nav-link show-on-login d-none" href="#" data-toggle="modal" data-target="#modal-login"
+               id="btn-login">Your Profile</a>
         </div>
     </div>
 </nav>
 <main class="container">
+
+    <!-- LOGIN MODAL -->
+
+    <div id="modal-login" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Login</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body" id="login-body">
+                    <form class="form" role="form" autocomplete="off" id="form-login" novalidate="" method="POST">
+                        <div class="form-group">
+                            <a href="" data-dismiss="modal" data-toggle="modal" data-target="#modal-register"
+                               class="float-right">New user?</a>
+                            <label for="ipt-email-login">E-mail</label>
+                            <input type="text" class="form-control form-control-lg" name="ipt-email-login" id="ipt-email-login"
+                                   required="">
+                            <div class="invalid-feedback">Oops, you missed this one.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ipt-pwd-login">Password</label>
+                            <input type="password" class="form-control form-control-lg" id="ipt-pwd-login" name="ipt-pwd-login" required=""
+                                   autocomplete="new-password">
+                            <div class="invalid-feedback">Enter your password too!</div>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="ipt-remember-me-login" name="ipt-remember-me-login">
+                            <label class="custom-control-label" for="ipt-remember-me-login">Remember me on this computer</label>
+                        </div>
+                        <div class="form-group py-4">
+                            <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal" aria-hidden="true">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-success btn-lg float-right" id="btn-modal-login">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REGISTER MODAL -->
+
+    <div id="modal-register" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Register</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" role="form" autocomplete="off" id="form-register" novalidate="" method="POST">
+                        <div class="form-group">
+                            <a href="" data-dismiss="modal" data-toggle="modal" data-target="#modal-login"
+                               class="float-right">Already registered?</a>
+                            <label for="ipt-last-name-register">Last Name</label>
+                            <input type="text" class="form-control form-control-lg" name="name" id="ipt-last-name-register" id="ipt-last-name-register" required="">
+                            <div class="invalid-feedback">You must enter a Last Name!</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ipt-first-name-register">First Name</label>
+                            <input type="text" class="form-control form-control-lg" name="ipt-first-name-register" id="ipt-first-name-register"
+                                   required="">
+                            <div class="invalid-feedback">You must enter a First Name!</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ipt-email-register">E-mail</label>
+                            <input type="text" class="form-control form-control-lg" name="ipt-email-register" id="ipt-email-register"
+                                   required="">
+                            <div class="invalid-feedback">Enter a valid Email!</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ipt-password-register">Password</label>
+                            <input type="password" class="form-control form-control-lg" id="ipt-password-register" name="ipt-password-register" required
+                                   autocomplete="new-password">
+                            <div class="invalid-feedback">Your password must contain 6 characters, including upper-case and lower-case characters!</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ipt-password-register-repeat">Repeat Password</label>
+                            <input type="password" class="form-control form-control-lg" id="ipt-password-register-repeat" name="ipt-password-register-repeat" required
+                                   autocomplete="new-password">
+                            <div class="invalid-feedback">Your passwords do not match!</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="custom-select-label" for="ipt-skills-register">What is your skill (please select
+                                one)</label>
+                            <select class="custom-select" id="ipt-skills-register" name="ipt-skills-register">
+                                <option selected value="programmer">Programmer</option>
+                                <option value="design">Game designer</option>
+                                <option value="illustrator">Illustrator</option>
+                                <option value="music">Musician</option>
+                                <option value="other">Other ...</option>
+                            </select>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="ipt-newsletter-register" name="ipt-newsletter-register" checked>
+                            <label class="custom-control-label" for="ipt-newsletter-register">Subscribe Newsletter</label>
+                        </div>
+                        <div class="form-group py-4">
+                            <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal" aria-hidden="true">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-success btn-lg float-right" id="btn-modal-register">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+
     <div id="carouselExampleIndicators" class="carousel slide m-md-3" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -48,24 +168,29 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <a href="https://globalgamejam.org/2019/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All"><img
-                        class="d-block w-100" src="../public/images/2019.png" alt="First slide"></a>
+                <a href="https://globalgamejam.org/2019/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All">
+                    <img class="d-block w-100" src="images/2019.png" alt="First slide">
+                </a>
             </div>
             <div class="carousel-item">
-                <a href="https://globalgamejam.org/2018/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All"><img
-                        class="d-block w-100" src="../public/images/2018.png" alt="Second slide"></a>
+                <a href="https://globalgamejam.org/2018/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All">
+                    <img class="d-block w-100" src="images/2018.png" alt="Second slide">
+                </a>
             </div>
             <div class="carousel-item">
-                <a href="https://globalgamejam.org/2017/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All"><img
-                        class="d-block w-100" src="../public/images/2017.png" alt="Third slide"></a>
+                <a href="https://globalgamejam.org/2017/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All">
+                    <img class="d-block w-100" src="images/2017.png" alt="Third slide">
+                </a>
             </div>
             <div class="carousel-item">
-                <a href="https://globalgamejam.org/2016/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All"><img
-                        class="d-block w-100" src="../public/images/2016.png" alt="Third slide"></a>
+                <a href="https://globalgamejam.org/2016/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All">
+                    <img class="d-block w-100" src="images/2016.png" alt="Fourth slide">
+                </a>
             </div>
             <div class="carousel-item">
-                <a href="https://globalgamejam.org/2015/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All"><img
-                        class="d-block w-100" src="../public/images/2015.png" alt="Third slide"></a>
+                <a href="https://globalgamejam.org/2015/games?title=&country=LU&city=&tools=All&diversifier=All&platforms=All">
+                    <img class="d-block w-100" src="images/2015.png" alt="Fifth slide">
+                </a>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
