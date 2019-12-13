@@ -29,12 +29,19 @@
             padding-left: 20px;
             font-size: 30px;
         }
-        textarea{
+        textarea[name="allergies"]{
             resize: none;
             width: 300px;
             height: 50px;
         }
+        textarea[name="newTeamTextA"]{
+            resize: none;
+            width: 300PX;
+            height: 22px;
+        }
+
     </style>
+
 
 </head>
 <body>
@@ -69,7 +76,26 @@
         <input type="checkbox" name="sizeXL" value="XL"> XL
         <br>
         Allergies/Intolerants:
-        <br><select>
+        <br>
+
+            <!--https://codepen.io/webdevstudios/pen/MKGzBw-->
+        <!-- il faut savoir selectionner plusieurs allergies! -_-! -->
+
+        <div class="input-group">
+            <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                <option value="cowMilk">Cow's Milk</option>
+                <option value="cowMilk">Eggs</option>
+                <option value="cowMilk">Tree Nuts</option>
+                <option value="cowMilk">Peanuts</option>
+                <option value="cowMilk">Shellfish</option>
+                <option value="cowMilk">Wheat</option>
+                <option value="cowMilk">Soy</option>
+                <option value="cowMilk">Fish</option>
+                <option value="cowMilk">Others</option>
+            </select>
+
+        </div>
+        <!--<select>
             <option value="cowMilk">Cow's Milk</option>
             <option value="cowMilk">Eggs</option>
             <option value="cowMilk">Tree Nuts</option>
@@ -79,14 +105,38 @@
             <option value="cowMilk">Soy</option>
             <option value="cowMilk">Fish</option>
             <option value="cowMilk">Others</option>
-        </select>
+        </select>-->
         <br>If others allergies, please specify!
         <br>
-        <textarea cols="num" rows="num" maxlength="80"></textarea>
+        <textarea name="allergies" cols="num" rows="num" maxlength="80"></textarea>
         <br>
         Are you:
         <input type="checkbox" name="vegeterian" value="vegeterian"> Vegeterian
         <input type="checkbox" name="vegan" value="vegan"> Vegan
+        <input type="checkbox" name="none" value="none"> None
+        <br>
+        Please select your Team:
+        <input type="checkbox" name="newTeam" value="newTeam" > New
+        <input type="checkbox" name="team" value="team"> Existing One
+        <br>
+
+        <textarea name="newTeamTextA" style="display: none" cols="num" rows="num" maxlength="30"></textarea>
     </box>
+
+    <script>
+        //Doesn't work :'(
+        'use strict'
+        const checkBoxTeam = document.getElementsByName("newTeam");
+
+        checkBoxTeam.onclick = function() {
+            const box = document.getElementsByName("newTeamTextA");
+            if(this.checked){
+                box.style.display ="block";
+            }else{
+                box.style.display = "none";
+            }
+        };
+        /*addEventListener('load', createNewTeam);*/
+    </script>
 </body>
 </html>
