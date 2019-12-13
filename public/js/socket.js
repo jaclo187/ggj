@@ -80,7 +80,7 @@ class WebSocketClient {
     };
 
     getRegisterData () {
-        let result = {
+        return {
             email : document.querySelector('#ipt-email-register').value,
             firstName : document.querySelector('#ipt-first-name-register').value,
             lastName : document.querySelector('#ipt-last-name-register').value,
@@ -88,15 +88,14 @@ class WebSocketClient {
             skill : document.querySelector('#ipt-skills-register').value,
             newsletter : document.querySelector('#ipt-newsletter-register').checked
         };
-        return result
     };
 
     getLoginData () {
-        let result = {};
-        result.email = document.querySelector('#ipt-email-login').value;
-        result.password = document.querySelector('#ipt-pwd-login').value;
-        result.remember = document.querySelector('#ipt-remember-me-login').checked;
-        return result;
+        return {
+            email : document.querySelector('#ipt-email-login').value,
+            password : document.querySelector('#ipt-pwd-login').value,
+            remember : document.querySelector('#ipt-remember-me-login').checked
+        };
     };
 
     onLogin (data) {
