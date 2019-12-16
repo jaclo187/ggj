@@ -34,10 +34,8 @@
             width: 300px;
             height: 50px;
         }
-        textarea[name="newTeamTextA"]{
-            resize: none;
-            width: 300PX;
-            height: 22px;
+        p[name="al"]{
+            font-size: 10px;
         }
 
     </style>
@@ -77,35 +75,19 @@
         <br>
         Allergies/Intolerants:
         <br>
-
-            <!--https://codepen.io/webdevstudios/pen/MKGzBw-->
-        <!-- il faut savoir selectionner plusieurs allergies! -_-! -->
-
-        <div class="input-group">
-            <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                <option value="cowMilk">Cow's Milk</option>
-                <option value="cowMilk">Eggs</option>
-                <option value="cowMilk">Tree Nuts</option>
-                <option value="cowMilk">Peanuts</option>
-                <option value="cowMilk">Shellfish</option>
-                <option value="cowMilk">Wheat</option>
-                <option value="cowMilk">Soy</option>
-                <option value="cowMilk">Fish</option>
-                <option value="cowMilk">Others</option>
-            </select>
-
-        </div>
-        <!--<select>
+        <p name="al">Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+        <select name="select" multiple size="3">
+            <option value="None" selected>None</option>
             <option value="cowMilk">Cow's Milk</option>
-            <option value="cowMilk">Eggs</option>
-            <option value="cowMilk">Tree Nuts</option>
-            <option value="cowMilk">Peanuts</option>
-            <option value="cowMilk">Shellfish</option>
-            <option value="cowMilk">Wheat</option>
-            <option value="cowMilk">Soy</option>
-            <option value="cowMilk">Fish</option>
-            <option value="cowMilk">Others</option>
-        </select>-->
+            <option value="Eggs">Eggs</option>
+            <option value="TreeNuts">Tree Nuts</option>
+            <option value="Peanuts">Peanuts</option>
+            <option value="Shellfish">Shellfish</option>
+            <option value="Wheat">Wheat</option>
+            <option value="Soy">Soy</option>
+            <option value="Fish">Fish</option>
+            <option value="Others">Others</option>
+        </select>
         <br>If others allergies, please specify!
         <br>
         <textarea name="allergies" cols="num" rows="num" maxlength="80"></textarea>
@@ -116,27 +98,48 @@
         <input type="checkbox" name="none" value="none"> None
         <br>
         Please select your Team:
-        <input type="checkbox" name="newTeam" value="newTeam" > New
-        <input type="checkbox" name="team" value="team"> Existing One
+        <input type="checkbox"  id="newTeam" value="newTeam" > New
+        <input type="checkbox"  id="team" value="team"> Existing One
         <br>
 
-        <textarea name="newTeamTextA" style="display: none" cols="num" rows="num" maxlength="30"></textarea>
+        <input type="text" id="newTeamTextA"  style="display: none" cols="num" rows="num" maxlength="30"></input>
+        <select id="select"  style="display: none">
+            <option value="" selected></option>
+        </select>
+        <input type="submit" value="Submit">
     </box>
 
     <script>
         //Doesn't work :'(
         'use strict'
-        const checkBoxTeam = document.getElementsByName("newTeam");
 
-        checkBoxTeam.onclick = function() {
-            const box = document.getElementsByName("newTeamTextA");
-            if(this.checked){
-                box.style.display ="block";
-            }else{
-                box.style.display = "none";
+        function teamFunction(){
+            const checkBoxNewTeam = document.getElementById("newTeam");
+            const checkBoxTeam = document.getElementById("team");
+            const textAreaNewT = document.getElementById("newTeamTextA");
+            const select = document.getElementById("select");
+            if(checkBoxNewTeam.checked === true){
+                textAreaNewT.style.display ="block";
+                checkBoxTeam.checked = false;
             }
-        };
-        /*addEventListener('load', createNewTeam);*/
+            if(checkBoxNewTeam.checked === false){
+                textAreaNewT.style.display = "none";
+            }
+            if(checkBoxTeam.checked === true){
+                select.style.display = "block";
+                checkBoxTeam.checked = false;
+            }
+            if(checkBoxTeam.checked === false){
+                select.style.display = "none";
+            }
+            console.log("Team "+checkBoxTeam.checked);
+            console.log("NEW "+ checkBoxNewTeam.checked);
+        }
+
+
+        document.getElementById("newTeam").addEventListener("click", teamFunction);
+        document.getElementById("team").addEventListener("click",  teamFunction);
+
     </script>
 </body>
 </html>

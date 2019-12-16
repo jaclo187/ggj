@@ -50,6 +50,12 @@ class MySQLConnection{
                 return conn.execute(stmt, inserts);
             } 
         }
+
+        /* should fill the selector id = select from participant.html with the groups name */
+        this.teams = async () => {
+            if (!conn) await connect();
+            return conn.execute('Select dtName FROM tblGroup');
+        }
     }
 }
 
