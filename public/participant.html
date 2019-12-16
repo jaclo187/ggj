@@ -93,9 +93,9 @@
         <textarea name="allergies" cols="num" rows="num" maxlength="80"></textarea>
         <br>
         Are you:
-        <input type="checkbox" name="vegeterian" value="vegeterian"> Vegeterian
-        <input type="checkbox" name="vegan" value="vegan"> Vegan
-        <input type="checkbox" name="none" value="none"> None
+        <input type="checkbox" id="vegeterian" value="vegeterian"> Vegeterian
+        <input type="checkbox" id="vegan" value="vegan"> Vegan
+        <input type="checkbox" id="none" value="none"> None
         <br>
         Please select your Team:
         <input type="checkbox"  id="newTeam" value="newTeam" > New
@@ -127,19 +127,36 @@
             }
             if(checkBoxTeam.checked === true){
                 select.style.display = "block";
-                checkBoxTeam.checked = false;
             }
             if(checkBoxTeam.checked === false){
                 select.style.display = "none";
             }
-            console.log("Team "+checkBoxTeam.checked);
-            console.log("NEW "+ checkBoxNewTeam.checked);
+            /*console.log("Team "+checkBoxTeam.checked);
+            console.log("NEW "+ checkBoxNewTeam.checked);*/
         }
 
-
+        function veg(){
+            const vegi = document.getElementById("vegeterian");
+            const vegan = document.getElementById("vegan");
+            const none = document.getElementById("none");
+            if(vegi.checked === true){
+                vegan.checked = false;
+                none.checked = false;
+            }
+            if(vegan.checked === true){
+                vegi.checked = false;
+                none.checked = false;
+            }
+            if(none.checked === true){
+                vegi.checked = false;
+                vegan.checked = false;
+            }
+        }
         document.getElementById("newTeam").addEventListener("click", teamFunction);
         document.getElementById("team").addEventListener("click",  teamFunction);
-
+        document.getElementById("vegeterian").addEventListener("click", veg);
+        document.getElementById("vegan").addEventListener("click", veg);
+        document.getElementById("none").addEventListener("click", veg);
     </script>
 </body>
 </html>
