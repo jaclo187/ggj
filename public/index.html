@@ -39,8 +39,8 @@
                id="btn-register">Register</a>
             <a role="button" class="nav-item nav-link hide-on-login" href="#" data-toggle="modal" data-target="#modal-login"
                id="btn-login">Login</a>
-            <a role="button" class="nav-item nav-link show-on-login d-none" href="#" data-toggle="modal" data-target="#modal-login"
-               id="btn-login">Your Profile</a>
+            <a role="button" class="nav-item nav-link show-on-login d-none" href="/participant" id="btn-profile">Your Profile</a>
+            <a role="button" class="nav-item nav-link show-on-login d-none" href="#" id="btn-logout">Logout</a>
         </div>
     </div>
 </nav>
@@ -62,12 +62,12 @@
                                class="float-right">New user?</a>
                             <label for="ipt-email-login">E-mail</label>
                             <input type="text" class="form-control form-control-lg" name="ipt-email-login" id="ipt-email-login"
-                                   required="">
+                                   required>
                             <div class="invalid-feedback">Oops, you missed this one.</div>
                         </div>
                         <div class="form-group">
                             <label for="ipt-pwd-login">Password</label>
-                            <input type="password" class="form-control form-control-lg" id="ipt-pwd-login" name="ipt-pwd-login" required=""
+                            <input type="password" class="form-control form-control-lg" id="ipt-pwd-login" name="ipt-pwd-login" required
                                    autocomplete="new-password">
                             <div class="invalid-feedback">Enter your password too!</div>
                         </div>
@@ -102,19 +102,19 @@
                             <a href="" data-dismiss="modal" data-toggle="modal" data-target="#modal-login"
                                class="float-right">Already registered?</a>
                             <label for="ipt-last-name-register">Last Name</label>
-                            <input type="text" class="form-control form-control-lg" name="name" id="ipt-last-name-register" id="ipt-last-name-register" required="">
+                            <input type="text" class="form-control form-control-lg" name="name" id="ipt-last-name-register" id="ipt-last-name-register" required>
                             <div class="invalid-feedback">You must enter a Last Name!</div>
                         </div>
                         <div class="form-group">
                             <label for="ipt-first-name-register">First Name</label>
                             <input type="text" class="form-control form-control-lg" name="ipt-first-name-register" id="ipt-first-name-register"
-                                   required="">
+                                   required>
                             <div class="invalid-feedback">You must enter a First Name!</div>
                         </div>
                         <div class="form-group">
                             <label for="ipt-email-register">E-mail</label>
                             <input type="text" class="form-control form-control-lg" name="ipt-email-register" id="ipt-email-register"
-                                   required="">
+                                   required>
                             <div class="invalid-feedback">Enter a valid Email!</div>
                         </div>
                         <div class="form-group">
@@ -194,47 +194,29 @@
 </main>
 <!-- Footer -->
 <footer class="page-footer font-small stylish-color-dark pt-4 bg-dark">
-
     <!-- Footer Links -->
     <div class="container text-center text-md-left text-light">
-
         <!-- Grid row -->
         <div class="row">
-
             <!-- Grid column -->
-
             <hr class="clearfix w-100 d-md-none">
-
             <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-
+            <div class="col-md-4 mx-auto">
                 <!-- Links -->
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Location</h5>
-
                 <ul class="list-unstyled">
-                    <li>
-                        <a href="https://goo.gl/maps/SPzgfmCodQGcvL3y5">Map View</a>
-                    </li>
-                    <li>
-                        <p>19 rue Guillaume Schneider<br>
-
-                            Luxembourg-Ville<br>
-
-                            L-2522, LU Luxembourg</p>
-                    </li>
+                    <li><a href="https://goo.gl/maps/SPzgfmCodQGcvL3y5">Map View</a></li>
+                    <li>19 rue Guillaume Schneider</li>
+                    <li>Luxembourg-Ville</li>
+                    <li>L-2522, LU Luxembourg</li>
                 </ul>
-
             </div>
             <!-- Grid column -->
-
             <hr class="clearfix w-100 d-md-none">
-
             <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-
+            <div class="col-md-4 mx-auto">
                 <!-- Links -->
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Social</h5>
-
                 <ul class="list-unstyled">
                     <li>
                         <a href="https://www.facebook.com/GlobalGameJam/">Facebook</a>
@@ -245,56 +227,17 @@
                     <li>
                         <a href="https://www.youtube.com/user/GlobalGameJam">YouTube</a>
                     </li>
-
                     <li>
                         <a href="https://www.twitch.tv/globalgamejam">Twitch</a>
                     </li>
-
                 </ul>
-
             </div>
-            <!-- Grid column -->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="https://www.facebook.com/ltam.lu/">LAM Facebook</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
         </div>
+        <div class="footer-copyright text-center py-3 text-light">&copy; Copyright 2019 - <span id="year"></span>
         <!-- Grid row -->
-
     </div>
     <!-- Footer Links -->
-
-    <hr class="bg-light">
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3 text-light">&copy; Copyright 2019<span id="year"></span>
-
     </div>
-    <!-- Copyright -->
-
 </footer>
-<!-- Footer -->
 </body>
 </html>

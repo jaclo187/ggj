@@ -26,8 +26,10 @@ const sessionOpts = {
     store: sessionStore,
     secure: true
 };
+
 const sess = session(sessionOpts);
 
+app.use(sess);
 app.use(helmet.noSniff())
 
 app.get("/projects", (req, res) => {
@@ -35,15 +37,19 @@ app.get("/projects", (req, res) => {
 });
 
 app.get("/participant", (req, res) => {
-  res.sendFile(__dirname + "/public/participant.html");
+  if(req.session.loggedin) res.sendFile(__dirname + "/public/participant.html");
+  else res.redirect('/');
+});
+
+app.get("/admin", (req, res) => {
+  if(req.session.admin) res.sendFile(__dirname + "/public/admin.html");
+  else res.redirect('/');
 });
 
 const logger = (req, res, next) => {
   console.log("Loaded")
-  console.log(req.session)
   next()
 } 
-
 if(DEBUG) app.use(logger)
 
 app.use('/', express.static('public'));

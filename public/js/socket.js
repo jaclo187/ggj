@@ -22,11 +22,15 @@ class WebSocketClient {
             });
 
             document.querySelector('#btn-modal-login').addEventListener('click', async e => {
-                console.log("preparing to send login")
                 e.preventDefault();
                 let data = this.getLoginData();
                 console.log("login being send")
                 await this.execute('login', data, 'login');
+            });
+
+            document.querySelector('#btn-logout').addEventListener('click', async e => {
+                e.preventDefault();
+                await this.execute('logout', {}, 'logout');
             });
         });
 
@@ -52,6 +56,9 @@ class WebSocketClient {
                         break;
                     case "registration":
                         this.onRegister(data)
+                        break;
+                    case "logout":
+                        this.onLogout(data)
                         break;
                     default:
                         break;
@@ -99,9 +106,8 @@ class WebSocketClient {
     };
 
     onLogin (data) {
-        console.log(data)
         if(data.success){
-            $('#modal-login').modal("toggle");
+            $('#modal-login').modal("hide");
             wsc.updateNav();
         } else {
             $(`<div class="alert alert-danger alert-login" role="alert">${data.message}!</div>`).insertAfter('#form-login');
@@ -112,7 +118,6 @@ class WebSocketClient {
     }
 
     onRegister (data) {
-        console.log(data)
         if(data.success){
             $('#modal-register').modal("toggle");
             wsc.updateNav();
@@ -122,6 +127,11 @@ class WebSocketClient {
                 $(".alert-register").fadeOut("slow");
             }, 2500);
         }
+    }
+
+    onLogout (data) {
+        wsc.updateNav()
+        window.location.reload()
     }
 
     updateNav () {

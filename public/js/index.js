@@ -10,6 +10,7 @@ class GlobalGameJam {
     document.querySelector('#ipt-email-register').addEventListener('keyup', this.checkEmail);
     document.querySelector('#ipt-first-name-register').addEventListener('keyup', this.checkFirstName);
     document.querySelector('#ipt-last-name-register').addEventListener('keyup', this.checkLastName);
+    document.querySelector('#year').innerHTML = new Date().getFullYear();
   };
 
   verifyPasswords () {

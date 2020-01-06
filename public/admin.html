@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Louis Jacoby">
+    <meta name="author" content="Kevin Boesen">
+    <meta name="author" content="Mariana Bre">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="css/customs.css"></link>
+    <link rel="stylesheet" href="css/fonts.css"></link>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/socket.js"></script>
+    <title>Global Game Jam - Admin</title>
+</head>
+<body>
+<header class="container">
+    <div class="row justify-content-md-center">
+        <span class="col"></span>
+        <h1 class="col-md-auto">Global Game Jam - 2020</h1>
+        <span class="col"></span>
+
+        <div class="w-100"></div>
+
+        <span class="col"></span>
+        <h2 class="col-md-auto">Make a Game in 48h!</h2>
+        <span class="col"></span>
+    </div>
+</header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbar-nav-alt-markup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#">Home</a>
+            <a class="nav-item nav-link" href="/projects">Projects</a>
+            <a role="button" class="nav-item nav-link show-on-login d-none" href="/participant" id="btn-profile">Your Profile</a>
+            <a role="button" class="nav-item nav-link show-on-login d-none" href="#" id="btn-logout">Logout</a>
+        </div>
+    </div>
+</nav>
+<main class="container">
+
+    <div class="justify-content-md-center">
+        
+        <div id="accordion">
+            <!-- CREATE AN EVENT -->
+            <div class="card">
+              <div class="card-header" id="card-create-event">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#create-event" aria-expanded="true" aria-controls="create-event">
+                    Create an event
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="create-event" class="collapse show" aria-labelledby="create-event" data-parent="#accordion">
+                <label for="ipt-event-name">Event name</label>
+                <input type="text" class="form-control form-control-lg" name="ipt-email-login" id="ipt-event-name" required>
+
+                <label for="ipt-event-start-date">Start date</label>
+                <input type="date" class="form-control form-control-lg" name="ipt-email-login" id="ipt-event-start-date" required>
+
+                <label for="ipt-event-end-date">End date</label>
+                <input type="date" class="form-control form-control-lg" name="ipt-email-login" id="ipt-event-end-date" required>
+
+                <label for='ipt-event-price'>Price</label>
+                <input type='number' class='form-control form-control-lg' name='ipt-event-price' id='ipt-event-price' required>
+
+                <label for='ipt-event-iban'>Payment / IBAN</label>
+                <input type='text' class='form-control form-control-lg' name='ipt-event-iban' id='ipt-event-iban' required>
+
+                <label for='ipt-select-location'>Location</label>
+                <select class='form-control form-control-lg' name='ipt-select-location' id='ipt-select-location' required>
+                    <option selected value="">Please select a location...</option>
+                </select>
+
+              </div>
+            </div>
+
+            <!-- EDIT AN EVENT -->
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Collapsible Group Item #2
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+
+            <!-- MANAGE USERS -->
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Collapsible Group Item #3
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+
+</main>
+<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-4 bg-dark">
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left text-light">
+        <!-- Grid row -->
+        <div class="row">
+            <!-- Grid column -->
+            <hr class="clearfix w-100 d-md-none">
+            <!-- Grid column -->
+            <div class="col-md-4 mx-auto">
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Location</h5>
+                <ul class="list-unstyled">
+                    <li><a href="https://goo.gl/maps/SPzgfmCodQGcvL3y5">Map View</a></li>
+                    <li>19 rue Guillaume Schneider</li>
+                    <li>Luxembourg-Ville</li>
+                    <li>L-2522, LU Luxembourg</li>
+                </ul>
+            </div>
+            <!-- Grid column -->
+            <hr class="clearfix w-100 d-md-none">
+            <!-- Grid column -->
+            <div class="col-md-4 mx-auto">
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Social</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://www.facebook.com/GlobalGameJam/">Facebook</a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/globalgamejam">Twitter</a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/user/GlobalGameJam">YouTube</a>
+                    </li>
+                    <li>
+                        <a href="https://www.twitch.tv/globalgamejam">Twitch</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright text-center py-3 text-light">&copy; Copyright 2019 - <span id="year"></span>
+        <!-- Grid row -->
+    </div>
+    <!-- Footer Links -->
+    </div>
+</footer>
+</body>
+</html>

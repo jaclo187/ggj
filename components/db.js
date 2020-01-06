@@ -21,6 +21,11 @@ class MySQLConnection{
             return conn.execute('SELECT idPerson, dtPassword FROM tblPerson WHERE dtEmail = ?', [`${email}`])
         }
 
+        this.admin = async person => {
+            if(!conn) await connect();
+            return conn.execute('SELECT dtIsGranted FROM tblAdmin WHERE fiPerson = ?', [`${person}`]);
+        }
+
         this.register = async (firstname, lastname, password, email, skill, newsLetter) =>
         {
             if (!conn) await connect();
@@ -30,12 +35,6 @@ class MySQLConnection{
             let inserts = [`${firstname}`, `${lastname}`, `${hash}`, `${email}`];
 
             const result = await conn.execute(stmt, inserts).catch(e => {return e});
-
-            console.log("------------")
-
-            console.log(result);
-
-            console.log("------------")
 
             if (result.errno) {
                 return result;
@@ -50,6 +49,12 @@ class MySQLConnection{
                 return conn.execute(stmt, inserts);
             } 
         }
+
+        this.getLocation = async () => {
+            let query = 'SELECT dtName FROM tblLocation;';
+            return conn.query(query);
+        }
+
     }
 }
 
