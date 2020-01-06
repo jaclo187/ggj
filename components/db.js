@@ -56,6 +56,15 @@ class MySQLConnection{
             if (!conn) await connect();
             return conn.execute('Select dtName FROM tblGroup');
         }
+
+        this.participants = async () => {
+            if(!conn) await connect();
+            //wellt group
+            let stmt = 'INSERT INTO tblParticipant (dtAllergies, dtTShirtSize) VALUES (?,?);' ;
+            let inserts = [`${allergies}`, `${tshirtSize}`];
+
+            return conn.execute(stmt, inserts);
+        }
     }
 }
 

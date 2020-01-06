@@ -19,9 +19,9 @@
     <style>
         box{
             display: block; /*très important!!!*/
-            background-color: honeydew;
+            background-color: #6c757d;
             width: 500px;
-            border: 15px solid lightgray;
+            border: 15px solid #007bff;
             padding: 50px;
             margin-left: 20px;
         }
@@ -68,15 +68,20 @@
     <box>
         T-Shirt size:
         <!-- to check only one -> function -->
-        <input type="checkbox" name="sizeS" value="S"> S
-        <input type="checkbox" name="sizeM" value="M"> M
-        <input type="checkbox" name="sizeL" value="L"> L
-        <input type="checkbox" name="sizeXL" value="XL"> XL
+        <input type="radio" name="size" value="S"> S
+        <input type="radio" name="size" value="M"> M
+        <input type="radio" name="size" value="L"> L
+        <input type="radio" name="size" value="XL"> XL
+        <br>
+        Are you:
+        <input type="radio" name="food" id="vegeterian" value="vegeterian"> Vegeterian
+        <input type="radio" name="food" id="vegan" value="vegan"> Vegan
+        <input type="radio" name="food" id="none" value="none"> None
         <br>
         Allergies/Intolerants:
         <br>
-        <p name="al">Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
-        <select name="select" multiple size="3">
+        <input type="text"  style="display: none" id="textvalue">
+        <select name="select" id="allergies" class="form-control" onfocus='this.size=3;' onblur='this.size=1;' onchange='allSelect()'>
             <option value="None" selected>None</option>
             <option value="cowMilk">Cow's Milk</option>
             <option value="Eggs">Eggs</option>
@@ -88,29 +93,25 @@
             <option value="Fish">Fish</option>
             <option value="Others">Others</option>
         </select>
-        <br>If others allergies, please specify!
+        If others allergies, please specify!
         <br>
         <textarea name="allergies" cols="num" rows="num" maxlength="80"></textarea>
         <br>
-        Are you:
-        <input type="checkbox" id="vegeterian" value="vegeterian"> Vegeterian
-        <input type="checkbox" id="vegan" value="vegan"> Vegan
-        <input type="checkbox" id="none" value="none"> None
-        <br>
+
         Please select your Team:
-        <input type="checkbox"  id="newTeam" value="newTeam" > New
-        <input type="checkbox"  id="team" value="team"> Existing One
+        <input type="radio"  name="team" id="newTeam" value="newTeam" > New
+        <input type="radio"  name="team" id="team" value="team"> Existing One
         <br>
 
-        <input type="text" id="newTeamTextA"  style="display: none" cols="num" rows="num" maxlength="30"></input>
+        <input type="text" id="newTeamTextA"  style="display: none" cols="num" rows="num" maxlength="30">
         <select id="select"  style="display: none">
             <option value="" selected></option>
         </select>
+        <br>
         <input type="submit" value="Submit">
     </box>
 
     <script>
-        //Doesn't work :'(
         'use strict'
 
         function teamFunction(){
@@ -120,7 +121,6 @@
             const select = document.getElementById("select");
             if(checkBoxNewTeam.checked === true){
                 textAreaNewT.style.display ="block";
-                checkBoxTeam.checked = false;
             }
             if(checkBoxNewTeam.checked === false){
                 textAreaNewT.style.display = "none";
@@ -131,32 +131,22 @@
             if(checkBoxTeam.checked === false){
                 select.style.display = "none";
             }
-            /*console.log("Team "+checkBoxTeam.checked);
-            console.log("NEW "+ checkBoxNewTeam.checked);*/
         }
 
-        function veg(){
-            const vegi = document.getElementById("vegeterian");
-            const vegan = document.getElementById("vegan");
-            const none = document.getElementById("none");
-            if(vegi.checked === true){
-                vegan.checked = false;
-                none.checked = false;
+        function allSelect(){
+            const d=document.getElementById("allergies");
+            const displaytext=d.options[d.selectedIndex].text;
+            if(window.performance.navigation.type == 1){
+                document.getElementById("textvalue").value="";
             }
-            if(vegan.checked === true){
-                vegi.checked = false;
-                none.checked = false;
-            }
-            if(none.checked === true){
-                vegi.checked = false;
-                vegan.checked = false;
-            }
+            document.getElementById("textvalue").style.display="block";
+            document.getElementById("textvalue").value=document.getElementById("textvalue").value + displaytext+"; ";
+
         }
+
         document.getElementById("newTeam").addEventListener("click", teamFunction);
         document.getElementById("team").addEventListener("click",  teamFunction);
-        document.getElementById("vegeterian").addEventListener("click", veg);
-        document.getElementById("vegan").addEventListener("click", veg);
-        document.getElementById("none").addEventListener("click", veg);
+
     </script>
 </body>
 </html>
