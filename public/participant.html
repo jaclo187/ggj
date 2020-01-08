@@ -18,9 +18,9 @@
     <style>
         box{
             display: block; /*très important!!!*/
-            background-color: honeydew;
+            background-color: #6c757d;
             width: 500px;
-            border: 15px solid lightgray;
+            border: 15px solid #007bff;
             padding: 50px;
             margin-left: 20px;
         }
@@ -33,10 +33,8 @@
             width: 300px;
             height: 50px;
         }
-        textarea[name="newTeamTextA"]{
-            resize: none;
-            width: 300PX;
-            height: 22px;
+        p[name="al"]{
+            font-size: 10px;
         }
 
     </style>
@@ -67,73 +65,87 @@
     <box>
         T-Shirt size:
         <!-- to check only one -> function -->
-        <input type="checkbox" name="sizeS" value="S"> S
-        <input type="checkbox" name="sizeM" value="M"> M
-        <input type="checkbox" name="sizeL" value="L"> L
-        <input type="checkbox" name="sizeXL" value="XL"> XL
+        <input type="radio" name="size" value="S"> S
+        <input type="radio" name="size" value="M"> M
+        <input type="radio" name="size" value="L"> L
+        <input type="radio" name="size" value="XL"> XL
+        <br>
+        Are you:
+        <input type="radio" name="food" id="vegeterian" value="vegeterian"> Vegeterian
+        <input type="radio" name="food" id="vegan" value="vegan"> Vegan
+        <input type="radio" name="food" id="none" value="none"> None
         <br>
         Allergies/Intolerants:
         <br>
-
-            <!--https://codepen.io/webdevstudios/pen/MKGzBw-->
-        <!-- il faut savoir selectionner plusieurs allergies! -_-! -->
-
-        <div class="input-group">
-            <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                <option value="cowMilk">Cow's Milk</option>
-                <option value="cowMilk">Eggs</option>
-                <option value="cowMilk">Tree Nuts</option>
-                <option value="cowMilk">Peanuts</option>
-                <option value="cowMilk">Shellfish</option>
-                <option value="cowMilk">Wheat</option>
-                <option value="cowMilk">Soy</option>
-                <option value="cowMilk">Fish</option>
-                <option value="cowMilk">Others</option>
-            </select>
-
-        </div>
-        <!--<select>
+        <input type="text"  style="display: none" id="textvalue">
+        <select name="select" id="allergies" class="form-control" onfocus='this.size=3;' onblur='this.size=1;' onchange='allSelect()'>
+            <option value="None" selected>None</option>
             <option value="cowMilk">Cow's Milk</option>
-            <option value="cowMilk">Eggs</option>
-            <option value="cowMilk">Tree Nuts</option>
-            <option value="cowMilk">Peanuts</option>
-            <option value="cowMilk">Shellfish</option>
-            <option value="cowMilk">Wheat</option>
-            <option value="cowMilk">Soy</option>
-            <option value="cowMilk">Fish</option>
-            <option value="cowMilk">Others</option>
-        </select>-->
-        <br>If others allergies, please specify!
+            <option value="Eggs">Eggs</option>
+            <option value="TreeNuts">Tree Nuts</option>
+            <option value="Peanuts">Peanuts</option>
+            <option value="Shellfish">Shellfish</option>
+            <option value="Wheat">Wheat</option>
+            <option value="Soy">Soy</option>
+            <option value="Fish">Fish</option>
+            <option value="Others">Others</option>
+        </select>
+        If others allergies, please specify!
         <br>
         <textarea name="allergies" cols="num" rows="num" maxlength="80"></textarea>
         <br>
-        Are you:
-        <input type="checkbox" name="vegeterian" value="vegeterian"> Vegeterian
-        <input type="checkbox" name="vegan" value="vegan"> Vegan
-        <input type="checkbox" name="none" value="none"> None
-        <br>
+
         Please select your Team:
-        <input type="checkbox" name="newTeam" value="newTeam" > New
-        <input type="checkbox" name="team" value="team"> Existing One
+        <input type="radio"  name="team" id="newTeam" value="newTeam" > New
+        <input type="radio"  name="team" id="team" value="team"> Existing One
         <br>
 
-        <textarea name="newTeamTextA" style="display: none" cols="num" rows="num" maxlength="30"></textarea>
+        <input type="text" id="newTeamTextA"  style="display: none" cols="num" rows="num" maxlength="30">
+        <select id="select"  style="display: none">
+            <option value="" selected></option>
+        </select>
+        <br>
+        <input type="submit" value="Submit">
     </box>
 
     <script>
-        //Doesn't work :'(
         'use strict'
-        const checkBoxTeam = document.getElementsByName("newTeam");
 
-        checkBoxTeam.onclick = function() {
-            const box = document.getElementsByName("newTeamTextA");
-            if(this.checked){
-                box.style.display ="block";
-            }else{
-                box.style.display = "none";
+        function teamFunction(){
+            const checkBoxNewTeam = document.getElementById("newTeam");
+            const checkBoxTeam = document.getElementById("team");
+            const textAreaNewT = document.getElementById("newTeamTextA");
+            const select = document.getElementById("select");
+            if(checkBoxNewTeam.checked === true){
+                textAreaNewT.style.display ="block";
             }
-        };
-        addEventListener('load', createNewTeam);
+        
+            addEventListener('load', createNewTeam);
+            if(checkBoxNewTeam.checked === false){
+                textAreaNewT.style.display = "none";
+            }
+            if(checkBoxTeam.checked === true){
+                select.style.display = "block";
+            }
+            if(checkBoxTeam.checked === false){
+                select.style.display = "none";
+            }
+        }
+
+        function allSelect(){
+            const d=document.getElementById("allergies");
+            const displaytext=d.options[d.selectedIndex].text;
+            if(window.performance.navigation.type == 1){
+                document.getElementById("textvalue").value="";
+            }
+            document.getElementById("textvalue").style.display="block";
+            document.getElementById("textvalue").value=document.getElementById("textvalue").value + displaytext+"; ";
+
+        }
+
+        document.getElementById("newTeam").addEventListener("click", teamFunction);
+        document.getElementById("team").addEventListener("click",  teamFunction);
+
     </script>
 </body>
 </html>

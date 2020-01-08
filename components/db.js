@@ -55,6 +55,20 @@ class MySQLConnection{
             return conn.query(query);
         }
 
+        /* should fill the selector id = select from participant.html with the groups name */
+        this.teams = async () => {
+            if (!conn) await connect();
+            return conn.execute('Select dtName FROM tblGroup');
+        }
+
+        this.participants = async () => {
+            if(!conn) await connect();
+            //wellt group
+            let stmt = 'INSERT INTO tblParticipant (dtAllergies, dtTShirtSize) VALUES (?,?);' ;
+            let inserts = [`${allergies}`, `${tshirtSize}`];
+
+            return conn.execute(stmt, inserts);
+        }
     }
 }
 
