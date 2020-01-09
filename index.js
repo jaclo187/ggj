@@ -47,7 +47,7 @@ app.get("/admin", (req, res) => {
 });
 
 const logger = (req, res, next) => {
-  console.log("Loaded")
+  //console.log("Loaded")
   next()
 } 
 if(DEBUG) app.use(logger)

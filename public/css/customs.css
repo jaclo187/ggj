@@ -9879,5 +9879,8 @@ h3 {
 h1 {
   font-family: Pixelated, sans-serif;
 }
+.watt::after{
+  content: 'W'; 
+}
 
 /*# sourceMappingURL=customs.css.map */

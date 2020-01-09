@@ -12,8 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/socket.js"></script>
+    <script src="js/participant.js"></script>
     <title>Global Game Jam - Participant</title>
     <style>
         /* box{
@@ -23,7 +22,7 @@
             border: 15px solid #007bff;
             padding: 50px;
             margin-left: 20px;
-        } */
+        } 
         div.Welcome{
             padding-left: 20px;
             font-size: 30px;
@@ -35,7 +34,7 @@
         }
         p[name="al"]{
             font-size: 10px;
-        }
+        }*/
 
     </style>
 </head>
@@ -68,58 +67,78 @@
         </div>
     </nav>
     <main class="container">
-        <div class="Welcome">Complete your profile</div>
+
+        <h2 class="bd-title">Complete your profile</h2>
+
         <form>
-            T-Shirt size:
-            <!-- to check only one -> function -->
-            <input type="radio" name="size" value="S"> S
-            <input type="radio" name="size" value="M"> M
-            <input type="radio" name="size" value="L"> L
-            <input type="radio" name="size" value="XL"> XL
-            <br>
-            Are you:
-            <input type="radio" name="food" id="vegeterian" value="vegeterian"> Vegeterian
-            <input type="radio" name="food" id="vegan" value="vegan"> Vegan
-            <input type="radio" name="food" id="none" value="none"> None
-            <br>
-            Allergies/Intolerants:
-            <br>
-            <input type="text"  style="display: none" id="textvalue">
-            <select name="select" id="allergies" class="form-control" onfocus='this.size=3;' onblur='this.size=1;' onchange='allSelect()'>
-                <option value="None" selected>None</option>
-                <option value="cowMilk">Cow's Milk</option>
-                <option value="Eggs">Eggs</option>
-                <option value="TreeNuts">Tree Nuts</option>
-                <option value="Peanuts">Peanuts</option>
-                <option value="Shellfish">Shellfish</option>
-                <option value="Wheat">Wheat</option>
-                <option value="Soy">Soy</option>
-                <option value="Fish">Fish</option>
-                <option value="Others">Others</option>
-            </select>
-            If others allergies, please specify!
-            <br>
-            <textarea name="allergies" cols="num" rows="num" maxlength="80"></textarea>
-            <br>
+            <div class='form-group' id='form-size'>
+                <h3 class="bd-content-title">Merchandise</h3>
+                <label for='size'>T-Shirt size:</label>
+                <select name="size" id="size" class="form-control">
+                    <option value="S"> S </option>
+                    <option value="M"> M </option>
+                    <option value="L"> L </option>
+                    <option value="XL"> XL </option>
+                </select>
+            </div>
 
-            Please select your Team:
-            <input type="radio"  name="team" id="newTeam" value="newTeam" > New
-            <input type="radio"  name="team" id="team" value="team"> Existing One
-            <br>
+            <div class='form-group' id='form-food'>
+                <h3 class="bd-content-title">Food</h3>
+                <label for='food'>Food preference:</label>
+                <select name="food" id="food" class="form-control">
+                    <option value="none"> None </option>
+                    <option value="vegeterian"> Vegeterian </option>
+                    <option value="vegan"> Vegan </option>
+                </select>
+            </div>
 
-            <input type="text" id="newTeamTextA"  style="display: none" cols="num" rows="num" maxlength="30">
-            <select id="select"  style="display: none">
-                <option value="" selected></option>
-            </select>
-            <br>
-            <input type="submit" value="Submit">
+            <div class='form-group' id='form-allergies'>
+                <h3 class="bd-content-title">Allergies</h3>
+                <label for='allergies'>Specify Allergies/Intolerants if present:</label>
+                <input type="text" id="allergies" name="allergies" class="form-control">
+            </div>
+
+            <div class='form-group' id='form-team'>
+                <h3 class="bd-content-title">Team</h3>
+                <label for="team">Do you want to join a team or create a new team?</label>
+                <select name="team" id="team" class="form-control">
+                    <option value="join">Join an existing team</option>
+                    <option value="create">Create a new team</option>
+                </select>
+            </div>
+
+            <div class='form-group' id='form-join-team'>
+                <label for="join-team">Choose your team:</label>
+                <select id="join-team" name="join-team" class="form-control">
+                </select>
+            </div>
+
+            <div class='form-group d-none' id='form-create-team'>
+                <label for="name-team">Create a team:</label>
+                <input type="text" name="name-team" id="name-team" class="form-control">
+            </div>  
+
+            <div class='form-group' id='form-hardware'>
+                <h3 class="bd-content-title">Hardware</h3>
+                <label for="hardware">Specify your hardware:</label>
+                <input type="text" name="hardware" id="hardware" class="form-control">
+                <label for="hardware">Specify your wattage:</label>
+                <input type="number" name="watt" id="watt" class="form-control watt" max="3000">
+                <label for="hardware">Number of outlets:</label>
+                <input type="number" name="outlets" id="outlets" class="form-control" max="8">
+            </div>  
+
+            <div class='form-group' id='form-submit'>
+                <input type="submit" class="btn btn-primary" value="Submit your profile" id='submit-form'>
+            </div>
+
         </form>
     </main>
 
     <script>
         'use strict'
 
-        function teamFunction(){
+        /*function teamFunction(){
             const checkBoxNewTeam = document.getElementById("newTeam");
             const checkBoxTeam = document.getElementById("team");
             const textAreaNewT = document.getElementById("newTeamTextA");
@@ -153,7 +172,7 @@
 
         document.getElementById("newTeam").addEventListener("click", teamFunction);
         document.getElementById("team").addEventListener("click",  teamFunction);
-
+        */
     </script>
 </body>
 </html>

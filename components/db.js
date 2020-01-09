@@ -69,6 +69,40 @@ class MySQLConnection{
 
             return conn.execute(stmt, inserts);
         }
+
+        this.getUserData = async userID => {
+            if(!conn) await connect();
+            let query = `SELECT * FROM tblPerson
+                        LEFT JOIN tblHardware ON tblHardware.fiPerson = tblPerson.idPerson
+                        LEFT JOIN tblParticipant ON tblParticipant.fiPerson = tblPerson.idPerson
+                        LEFT JOIN tblGroup ON tblGroup.idGroup = tblParticipant.fiGroup
+                        WHERE idPerson = ${userID};`;
+            return conn.query(query);
+        }
+
+        this.updateUser = async (data, userID) => {
+
+            if(data.team !== 'join'){
+               let createTeamQuery = `INERT INTO tblGroup(dtName) VALUES (?)`;
+               await conn.execute(createTeamQuery, [`${data.teamName}`]).catch(e => {console.log(e)});
+            }
+
+            let joinTeamQuery = `UPDATE tblParticipant
+                                SET fiGroup =  (SELECT idGroup 
+                                                FROM tblGroup 
+                                                WHERE dtName = ?)
+                                WHERE fiPerson = ?;`
+            await conn.execute(joinTeamQuery, [`${data.teamName}`, userID]).catch(e => {console.log(e)});
+
+            let pariticipantStmt = `UPDATE tblParticipant SET dtFood = ?, dtAllergies = ?, dtTShirtSize = ? WHERE fiPerson = ?`;
+            await conn.execute(pariticipantStmt, [`${data.food}`, `${data.allergies}`, `${data.size}`, userID] ).catch(e => {console.log(e)});
+
+            let hardwareStmt = `INSERT INTO tblHardware (dtDescription, dtPower, dtOutlets, fiPerson) VALUES (?,?,?,?)`;
+            await conn.execute(hardwareStmt, [`${data.hardware}`, data.wattage, data.outlets, userID] ).catch(e => {console.log(e)});
+
+            return true;
+
+        }
     }
 }
 

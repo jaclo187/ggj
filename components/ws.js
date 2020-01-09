@@ -9,6 +9,7 @@ module.exports = class WebSocketServer{
         console.log("Websocket Server starting...")
 
         wss.on('connection', (socket, req) => {
+
             const send = (msg, options) => {
               const obj = {};
               Object.assign(obj, {msg: msg}, options);
@@ -55,6 +56,7 @@ module.exports = class WebSocketServer{
                               break;
                             case undefined:
                               req.session.loggedin = true;
+                              req.session.userID = rows[0].idPerson;
                               req.session.save();
                               send('registration', {success: true} )
                               break;
@@ -78,9 +80,8 @@ module.exports = class WebSocketServer{
                           let loggedin = await bcrypt.compare(data.password, rows[0].dtPassword);
                           if (loggedin) {
                             req.session.loggedin = true;
+                            req.session.userID = rows[0].idPerson;
                             let admin = await conn.admin(rows[0].idPerson);
-                            console.log("------");
-                            console.log(admin)
                             if(admin[0][0].dtIsGranted) req.session.admin = true
                             req.session.save();
                             send('login', {success: true});
@@ -99,11 +100,6 @@ module.exports = class WebSocketServer{
                       conn.registerAdmin(data.email, data.name);
                       break;
 
-                    case 'updateUser':
-                      
-                      conn.updateUser();
-                      break;
-
                     case 'getLocation':
                       let locations = await conn.getLocations();
                       break;
@@ -114,7 +110,23 @@ module.exports = class WebSocketServer{
                       req.session.regenerate(e=>console.log(e));
                       send("logout",{});
                       console.log('Logged out');
-                    break;
+                      break;
+
+                    case 'getUserData' :
+                      let result = await conn.getUserData(req.session.userID);
+                      if(result) {
+                        send('userData', result[0]);
+                      }
+                      break;
+
+                    case 'updateUser' :
+                      console.log('User update trigger')
+                      let update = await conn.updateUser(data, req.session.userID);
+                      console.log(update);
+                      if(update) {
+                        send('updateUser', {message: 'success'});
+                      }
+                      break;
 
                     default:
                       break;
