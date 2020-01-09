@@ -16,14 +16,14 @@
     <script src="js/socket.js"></script>
     <title>Global Game Jam - Participant</title>
     <style>
-        box{
-            display: block; /*très important!!!*/
+        /* box{
+            display: block; /*très important!!!
             background-color: #6c757d;
             width: 500px;
             border: 15px solid #007bff;
             padding: 50px;
             margin-left: 20px;
-        }
+        } */
         div.Welcome{
             padding-left: 20px;
             font-size: 30px;
@@ -49,64 +49,72 @@
             <div class="w-100"></div>
 
             <span class="col"></span>
-            <h2 class="col-md-auto">Make a Game in 48h!</h2>
-            <span class="col"></span>
-
-            <div class="w-100"></div>
-
-            <span class="col"></span>
             <h2 class="col-md-auto">Welcome to your personal environment</h2>
             <span class="col"></span>
         </div>
     </header>
-    <div class="Welcome">May you complete the following, please</div>
-    <br>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbar-nav-alt-markup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/projects">Projects</a>
+                <a role="button" class="nav-item nav-link hide-on-login" href="#" data-toggle="modal" data-target="#modal-register"
+                   id="btn-register">Register</a>
+                <a role="button" class="nav-item nav-link hide-on-login" href="#" data-toggle="modal" data-target="#modal-login"
+                   id="btn-login">Login</a>
+                <a role="button" class="nav-item nav-link show-on-login d-none active" href="/participant" id="btn-profile">Your Profile</a>
+                <a role="button" class="nav-item nav-link show-on-login d-none" href="#" id="btn-logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="Welcome">Complete your profile</div>
+        <form>
+            T-Shirt size:
+            <!-- to check only one -> function -->
+            <input type="radio" name="size" value="S"> S
+            <input type="radio" name="size" value="M"> M
+            <input type="radio" name="size" value="L"> L
+            <input type="radio" name="size" value="XL"> XL
+            <br>
+            Are you:
+            <input type="radio" name="food" id="vegeterian" value="vegeterian"> Vegeterian
+            <input type="radio" name="food" id="vegan" value="vegan"> Vegan
+            <input type="radio" name="food" id="none" value="none"> None
+            <br>
+            Allergies/Intolerants:
+            <br>
+            <input type="text"  style="display: none" id="textvalue">
+            <select name="select" id="allergies" class="form-control" onfocus='this.size=3;' onblur='this.size=1;' onchange='allSelect()'>
+                <option value="None" selected>None</option>
+                <option value="cowMilk">Cow's Milk</option>
+                <option value="Eggs">Eggs</option>
+                <option value="TreeNuts">Tree Nuts</option>
+                <option value="Peanuts">Peanuts</option>
+                <option value="Shellfish">Shellfish</option>
+                <option value="Wheat">Wheat</option>
+                <option value="Soy">Soy</option>
+                <option value="Fish">Fish</option>
+                <option value="Others">Others</option>
+            </select>
+            If others allergies, please specify!
+            <br>
+            <textarea name="allergies" cols="num" rows="num" maxlength="80"></textarea>
+            <br>
 
-    <box>
-        T-Shirt size:
-        <!-- to check only one -> function -->
-        <input type="radio" name="size" value="S"> S
-        <input type="radio" name="size" value="M"> M
-        <input type="radio" name="size" value="L"> L
-        <input type="radio" name="size" value="XL"> XL
-        <br>
-        Are you:
-        <input type="radio" name="food" id="vegeterian" value="vegeterian"> Vegeterian
-        <input type="radio" name="food" id="vegan" value="vegan"> Vegan
-        <input type="radio" name="food" id="none" value="none"> None
-        <br>
-        Allergies/Intolerants:
-        <br>
-        <input type="text"  style="display: none" id="textvalue">
-        <select name="select" id="allergies" class="form-control" onfocus='this.size=3;' onblur='this.size=1;' onchange='allSelect()'>
-            <option value="None" selected>None</option>
-            <option value="cowMilk">Cow's Milk</option>
-            <option value="Eggs">Eggs</option>
-            <option value="TreeNuts">Tree Nuts</option>
-            <option value="Peanuts">Peanuts</option>
-            <option value="Shellfish">Shellfish</option>
-            <option value="Wheat">Wheat</option>
-            <option value="Soy">Soy</option>
-            <option value="Fish">Fish</option>
-            <option value="Others">Others</option>
-        </select>
-        If others allergies, please specify!
-        <br>
-        <textarea name="allergies" cols="num" rows="num" maxlength="80"></textarea>
-        <br>
+            Please select your Team:
+            <input type="radio"  name="team" id="newTeam" value="newTeam" > New
+            <input type="radio"  name="team" id="team" value="team"> Existing One
+            <br>
 
-        Please select your Team:
-        <input type="radio"  name="team" id="newTeam" value="newTeam" > New
-        <input type="radio"  name="team" id="team" value="team"> Existing One
-        <br>
-
-        <input type="text" id="newTeamTextA"  style="display: none" cols="num" rows="num" maxlength="30">
-        <select id="select"  style="display: none">
-            <option value="" selected></option>
-        </select>
-        <br>
-        <input type="submit" value="Submit">
-    </box>
+            <input type="text" id="newTeamTextA"  style="display: none" cols="num" rows="num" maxlength="30">
+            <select id="select"  style="display: none">
+                <option value="" selected></option>
+            </select>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </main>
 
     <script>
         'use strict'
