@@ -1,5 +1,7 @@
 'use strict';
 
+// ----- CONSTANTS AND PARAMETERS -----
+
 const DEBUG = true
 const PORT = 8080
 const express = require('express')
@@ -12,7 +14,7 @@ const MySQLSessionOpts = require(__dirname + '/components/mysql_options.js').mys
 const sessionStore = new MySQLStore(MySQLSessionOpts);
 const sessionOpts = {
     cookie: {
-      path: '/', //nodejaclo/',
+      path: '/',
       domain: "192.168.132.238",
       secure: false,
       expires: new Date(Date.now() + 86400000),
@@ -26,11 +28,14 @@ const sessionOpts = {
     store: sessionStore,
     secure: true
 };
-
 const sess = session(sessionOpts);
+
+// ----- MIDDLEWARE -----
 
 app.use(sess);
 app.use(helmet.noSniff())
+
+// ----- ROUTING -----
 
 app.get("/projects", (req, res) => {
   res.sendFile(__dirname + "/public/projects.html");
@@ -46,16 +51,25 @@ app.get("/admin", (req, res) => {
   else res.redirect('/');
 });
 
+
+// ----- DEBUGGING ------
+
 const logger = (req, res, next) => {
   //console.log("Loaded")
+  //console.log(req.session)
+  //console.log(req.connection.remoteAddress)
   next()
 } 
-if(DEBUG) app.use(logger)
+
+if(DEBUG) app.use(logger);
+
+// ----- STATIC ROUTING -----
 
 app.use('/', express.static('public'));
 
-const server = http.createServer(app);
+// ----- SOCKET SERVER SETUP -----
 
+const server = http.createServer(app);
 const WebSocketServer = require('./components/ws.js')
 const wss = new WebSocketServer(server, sess);
 
