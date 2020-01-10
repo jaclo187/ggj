@@ -24,7 +24,6 @@ class WebSocketClient {
             document.querySelector('#btn-modal-login').addEventListener('click', async e => {
                 e.preventDefault();
                 let data = this.getLoginData();
-                console.log("login being send")
                 await this.execute('login', data, 'login');
             });
 
