@@ -103,6 +103,21 @@ class MySQLConnection{
             return true;
 
         }
+
+        this.updateTeams = async () => {
+            if (!conn) await connect();
+            return conn.query('SELECT dtName FROM tblGroup;').catch(e => {console.log(e)});
+        }
+
+        this.getUsers = async () => {
+            if (!conn) await connect();
+            return conn.query('SELECT * FROM tblPerson LEFT JOIN tblParticipant ON tblPerson.idPerson = tblParticipant.fiPerson LEFT JOIN tblGroup ON tblParticipant.fiGroup = tblGroup.idGroup;').catch(e => {console.log(e)});
+        }
+
+        this.deleteUser = async userID => {
+            if (!conn) await connect();
+            return conn.query(`DELETE FROM tblPerson WHERE idPerson = ${userID};`);
+        }
     }
 }
 
