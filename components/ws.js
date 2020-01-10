@@ -55,12 +55,13 @@ module.exports = class WebSocketServer{
                               send('registration', {success: false, message: "Email already in use"} )
                               break;
                             case undefined:
+                              let login = await conn.login(data.email, data.password);
+                              let rows = login[0]
                               req.session.loggedin = true;
                               req.session.userID = rows[0].idPerson;
                               req.session.save();
                               send('registration', {success: true} )
                               break;
-
                             default:
                               send('registration', {success: false, message: "An error occured"} );
                               break
@@ -120,14 +121,31 @@ module.exports = class WebSocketServer{
                       break;
 
                     case 'updateUser' :
-                      console.log('User update trigger')
                       let update = await conn.updateUser(data, req.session.userID);
-                      console.log(update);
                       if(update) {
                         send('updateUser', {message: 'success'});
                       }
-                      break;
+                    break;
 
+                    case 'updateTeams':
+                      let teams = await conn.updateTeams();
+                      if(teams){
+                        send('updateTeams', teams[0]);
+                      }
+                    break;
+
+                    case 'getUsers':
+                      let users = await conn.getUsers();
+                      if(users){
+                        send('getUsers', users[0]);
+                      }
+                    break;
+
+                    case 'deleteUser':
+                      let user = data.userID;
+                      if(user){
+                        conn.deleteUser(user);
+                      }
                     default:
                       break;
 
