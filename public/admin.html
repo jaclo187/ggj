@@ -14,7 +14,6 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/admin.js"></script>
-    <script src="js/socket.js"></script>
     <title>Global Game Jam - Admin</title>
 </head>
 <body>
@@ -32,19 +31,21 @@
     </div>
 </header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse justify-content-md-center" id="navbar-nav-alt-markup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#">Home</a>
-            <a class="nav-item nav-link" href="/projects">Projects</a>
-            <a role="button" class="nav-item nav-link show-on-login d-none" href="/participant" id="btn-profile">Your Profile</a>
-            <a role="button" class="nav-item nav-link show-on-login d-none" href="#" id="btn-logout">Logout</a>
-        </div>
-    </div>
+  <div class="collapse navbar-collapse justify-content-md-center" id="navbar-nav-alt-markup">
+      <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/">Home</a>
+          <a class="nav-item nav-link" href="/projects">Projects</a>
+          <a role="button" class="nav-item nav-link hide-on-login" href="#" data-toggle="modal" data-target="#modal-register"
+             id="btn-register">Register</a>
+          <a role="button" class="nav-item nav-link hide-on-login" href="#" data-toggle="modal" data-target="#modal-login"
+             id="btn-login">Login</a>
+          <a role="button" class="nav-item nav-link show-on-login d-none" href="/participant" id="btn-profile">Your Profile</a>
+          <a role="button" class="nav-item nav-link show-on-login d-none" href="#" id="btn-logout">Logout</a>
+      </div>
+  </div>
 </nav>
 <main class="container">
-
     <div class="justify-content-md-center">
-        
         <div id="accordion">
             <!-- CREATE AN EVENT -->
             <div class="card">
@@ -56,7 +57,7 @@
                 </h5>
               </div>
           
-              <div id="create-event" class="collapse show" aria-labelledby="create-event" data-parent="#accordion">
+              <div id="create-event" class="collapse" aria-labelledby="create-event" data-parent="#accordion">
                 <label for="ipt-event-name">Event name</label>
                 <input type="text" class="form-control form-control-lg" name="ipt-email-login" id="ipt-event-name" required>
 
@@ -99,15 +100,15 @@
             <!-- MANAGE USERS -->
             <div class="card">
               <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Collapsible Group Item #3
+                <h5 class="mb-0" id="users-container-button">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#users-container" aria-expanded="false" aria-controls="collapseThree">
+                    Users
                   </button>
                 </h5>
               </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <div id="users-container" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body" id="users-container-body">
+                  
                 </div>
               </div>
             </div>
